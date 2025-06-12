@@ -1,0 +1,326 @@
+/* Importação da fonte PT Sans */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PT Sans", sans-serif;
+}
+
+body {
+    background-color: #F8F0E3; /* Cor de fundo suave */
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
+    flex-direction: column;
+}
+
+.content-wrapper {
+    max-width: 900px; /* Largura máxima para o conteúdo principal */
+    width: 100%;
+    margin: 20px auto; /* Centraliza o wrapper e adiciona margem */
+    padding: 0 20px; /* Espaçamento lateral */
+}
+
+/* --- Spotify Embed --- */
+.spotify-embed-container {
+    background-color: #E2B5C1; /* Tom mais claro para o Spotify */
+    padding: 15px;
+    width: 100%; /* Ocupa a largura total disponível */
+    max-width: 700px; /* Limita a largura do contêiner do embed */
+    margin-bottom: 20px; /* Espaçamento abaixo do embed */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    overflow: hidden; /* Garante que o conteúdo não vaze */
+    position: relative; /* Para o texto de placeholder */
+    display: flex; /* Adicionado display flex para centralizar o iframe internamente */
+    justify-content: center; /* Centraliza o iframe horizontalmente */
+    align-items: center; /* Centraliza o iframe verticalmente (se houver altura extra) */
+}
+
+.spotify-embed-container iframe {
+    /* Agora o CSS controla a largura do iframe. O width="50%" foi removido do HTML. */
+    width: 100%; /* Garante que o iframe ocupe 100% da largura do seu contêiner (.spotify-embed-container) */
+    display: block; /* Garante que se comporte como um bloco */
+    margin: 0 auto; /* Centraliza o iframe dentro do seu próprio espaço, se houver largura sobrando */
+}
+
+/* --- Primeira Página --- */
+.primeira-pagina {
+    background-color: #D697B1; /* Cor de fundo mais vibrante, mas suave */
+    padding: 30px;
+    border-radius: 20px; /* Bordas mais arredondadas */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+    margin-bottom: 40px; /* Espaço abaixo da primeira página */
+}
+
+#titulo {
+    text-align: center;
+    padding: 20px 0; /* Mais padding */
+    color: #FFF; /* Texto branco */
+    text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4); /* Sombra mais suave */
+    font-size: 2.5em; /* Tamanho do título */
+    font-weight: 700;
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+/* --- Slider --- */
+.container-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* Espaçamento maior entre botões e imagens */
+    min-height: 500px; /* Altura mínima para o slider */
+    flex-wrap: nowrap; /* Impede que os itens quebrem linha, garantindo que fiquem na mesma linha */
+    margin: 0 auto; /* Centraliza */
+}
+
+.container-images {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%; /* Largura padrão para as imagens em desktop */
+    max-width: 600px; /* Largura máxima */
+    aspect-ratio: 16/9; /* Proporção para evitar distorção em algumas imagens */
+    flex-grow: 1; /* Permite que a imagem cresça para ocupar espaço disponível */
+    flex-shrink: 1; /* Permite que a imagem encolha se necessário */
+    flex-basis: auto; /* Define a base de tamanho flexível */
+}
+
+.slider{
+    opacity: 0;
+    transition: opacity .5s ease-in-out; /* Transição mais suave e com easing */
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Ocupa a altura total do container-images */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 20px; /* Bordas mais arredondadas */
+    border: 5px solid #FFE0F0; /* Borda mais grossa e clara */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Sombra para as imagens */
+}
+
+.caption {
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente para a legenda */
+    border-radius: 10px;
+    border: 1px solid #CCC;
+    position: absolute;
+    font-size: 1.1em;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    text-align: center;
+    width: calc(100% - 40px); /* Largura ajustada para a legenda */
+    padding: 15px; /* Mais padding */
+    box-sizing: border-box;
+    bottom: -60px; /* Posição abaixo da imagem */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    color: #444;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Sombra para a legenda */
+    font-weight: 400;
+}
+
+.caption strong {
+    color: #C06090; /* Cor de destaque para o título da legenda */
+    font-weight: 700;
+    font-size: 1.2em;
+    display: block; /* Para o strong ficar em sua própria linha */
+    margin-bottom: 5px;
+}
+
+.on {
+    opacity: 1;
+}
+
+.slider-button {
+    width: 40px; /* Botões maiores */
+    height: 40px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.7); /* Fundo semi-transparente */
+    border-radius: 50%; /* Botões redondos */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.slider-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.05);
+}
+
+.slider-button img {
+    max-width: 60%; /* Ajusta o tamanho da seta */
+    height: auto;
+    filter: invert(40%) sepia(50%) saturate(1000%) hue-rotate(300deg) brightness(80%) contrast(100%); /* Cor da seta para combinar */
+}
+
+#prev-button {
+    transform: rotate(180deg);
+}
+
+/* --- Seção de Texto --- */
+.textinho {
+    background-color: #FFF;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    margin-top: 60px; /* Espaço para a legenda do slider */
+    text-align: justify; /* Manteve justificado */
+    max-width: 800px; /* Limita a largura para melhor leitura */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textao {
+    text-indent: 5%; /* Indentação menor */
+    padding-top: 20px;
+    font-size: 1.3em;
+    line-height: 1.8; /* Melhor legibilidade */
+    color: #444;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.textao2 {
+    text-indent: 5%;
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #444;
+    font-weight: 400;
+}
+
+#eu-te-amo {
+    padding-top: 40px; /* Mais padding */
+    font-style: italic;
+    font-size: 4em; /* Tamanho maior */
+    text-align: center;
+    color: #C06090; /* Cor de destaque */
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+#infinito {
+    padding-top: 100px; /* Ajustado para um valor mais razoável */
+    font-size: 5em; /* Tamanho maior */
+    text-align: center;
+    color: #C06090;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px; /* Espaçamento abaixo */
+}
+
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 15px;
+    }
+
+    .spotify-embed-container {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    .spotify-embed-container iframe {
+        width: 80% !important; /* Usar !important para sobrescrever o inline style do HTML se necessário */
+    }
+
+    #titulo {
+        font-size: 2em; /* Tamanho ajustado para mobile */
+        padding: 15px 0;
+    }
+
+    .container-slider {
+        /* Garante que os itens permaneçam em linha mesmo em telas pequenas */
+        flex-wrap: nowrap; 
+        gap: 0.5rem; /* Reduz o espaçamento entre os itens do slider para dar mais espaço */
+        min-height: auto; /* Remove altura mínima fixa */
+        width: 95%;
+        padding: 0 5px; /* Reduz o padding para maximizar o espaço dos botões */
+    }
+    
+    .container-images {
+        /* Deixa a imagem mais flexível para ocupar o espaço restante */
+        width: auto; 
+        flex-grow: 1; /* Garante que a imagem ocupe o espaço restante */
+        flex-shrink: 1; /* Permite que a imagem encolha para caber */
+        height: auto; /* Altura automática */
+        aspect-ratio: 4/3; /* Proporção mais adequada para mobile */
+    }
+
+    .slider-button {
+        width: 30px; /* Botões um pouco menores para garantir espaço */
+        height: 30px;
+        flex-shrink: 0; /* Garante que os botões não encolham */
+        padding: 5px; /* Adiciona padding interno para a imagem da seta */
+    }
+    .slider-button img {
+        max-width: 70%; /* Ajusta o tamanho da seta dentro do botão */
+    }
+    /* Regras específicas para garantir a rotação correta em mobile */
+    #prev-button {
+        transform: rotate(180deg) !important; /* Garante que a seta 'anterior' esteja normal em mobile */
+    }
+    #next-button {
+        transform: rotate(0deg) !important; /* Garante que a seta 'próximo' esteja normal em mobile */
+    }
+
+    .caption {
+        font-size: 0.95em;
+        width: calc(100% - 30px);
+        padding: 10px;
+        bottom: -45px; /* Ajusta a posição da legenda */
+    }
+
+    .textinho {
+        padding: 25px;
+        margin-top: 55px; /* Ajusta a margem superior */
+    }
+
+    .textao, .textao2 {
+        font-size: 1.1em;
+        text-indent: 0; /* Remove indentação em mobile */
+        text-align: left; /* Alinha à esquerda em mobile para melhor leitura */
+    }
+
+    #eu-te-amo {
+        font-size: 3em;
+        padding-top: 30px;
+    }
+    #infinito {
+        font-size: 4em;
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    #titulo {
+        font-size: 1.8em;
+    }
+    .spotify-embed-container {
+        max-width: 90%; /* Ajusta para telas muito pequenas */
+    }
+    .spotify-embed-container iframe {
+        width: 90% !important; /* Usar !important para sobrescrever o inline style do HTML se necessário */
+    }
+
+    .container-images {
+        /* Mantém o flex-grow e a largura automática */
+    }
+    .textao, .textao2 {
+        font-size: 1em;
+    }
+    #eu-te-amo {
+        font-size: 2.5em;
+    }
+    #infinito {
+        font-size: 3.5em;
+    }
+}
