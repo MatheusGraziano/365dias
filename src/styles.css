@@ -265,12 +265,7 @@ body {
         max-width: 70%; /* Ajusta o tamanho da seta dentro do botão */
     }
     /* Regras específicas para garantir a rotação correta em mobile */
-    #prev-button {
-        transform: rotate(180deg) !important; /* Garante que a seta 'anterior' esteja normal em mobile */
-    }
-    #next-button {
-        transform: rotate(0deg) !important; /* Garante que a seta 'próximo' esteja normal em mobile */
-    }
+    
 
     .caption {
         font-size: 0.95em;
@@ -311,9 +306,6 @@ body {
         width: 90% !important; /* Usar !important para sobrescrever o inline style do HTML se necessário */
     }
 
-    .container-images {
-        /* Mantém o flex-grow e a largura automática */
-    }
     .textao, .textao2 {
         font-size: 1em;
     }
